@@ -38,5 +38,7 @@ This is the basic item, a ToDoItem.  It holds all of the data of a single to-do 
 Currently, properties can be set directly by other elements, but my suspicion is that I'll need
 a set method on the date at some point.
 
-I want to include as little logic on this class as possible because I would prefer if these could be directly serialized.z
+I want to include as little logic on this class as possible because I would prefer if these could be directly serialized.
+
+I'd like to make it so that priorityLevel is only defined once and inverted as needed.
 */
