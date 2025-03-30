@@ -1,7 +1,8 @@
 export default class ItemGroup {
-    constructor(name,description) {
+    constructor(groupName,description) {
         this._id = crypto.randomUUID();
-        this.name = name;
+        this.group = true;
+        this.groupName = groupName;
         this.description = description;
         this.contents = new Array();
     }
@@ -35,26 +36,5 @@ export default class ItemGroup {
     updateGroup(itemToUpdate) {
         this.deleteFromGroup(itemToUpdate.id);
         this.addToGroup(itemToUpdate);
-    }
-
-    serialize() {
-        const mainGroupArr = [];
-        for (const item of this.contents) {
-            if (item instanceof ItemGroup) {
-                console.log("entered IF")
-                const contentsArr = new Array();
-                for (const subItem of item.contents) {
-                    contentsArr.push(subItem);
-                }
-                const subItemOutput = {id:item.id, name:item.name, description:item.description, contents:contentsArr}
-                console.log(subItemOutput);
-                mainGroupArr.push(JSON.stringify(subItemOutput));
-            } else {
-                mainGroupArr.push(JSON.stringify(item));
-            }
-        }
-        console.log(`mainGroupArr ${mainGroupArr}`);
-        const jsonOutput = {id:this.id, name:this.name, description:this.description, contents:mainGroupArr};
-        return JSON.stringify(jsonOutput);
     }
 }

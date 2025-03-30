@@ -23,5 +23,3 @@ itemGroup.updateGroup(returnedItem);
 masterGroup.addToGroup(itemGroup);
 //console.table(itemGroup);
 //console.table(itemGroup);
-
-console.log(masterGroup.serialize());
