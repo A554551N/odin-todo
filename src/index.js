@@ -8,3 +8,4 @@ console.table(testItem);
 console.log(`Priority: ${testItem.priority}`)
 testItem.priority = "HIGH"
 console.log(`Priority: ${testItem.priority}`)
+console.log(testItem.id)
