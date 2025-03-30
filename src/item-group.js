@@ -1,14 +1,12 @@
 export default class ItemGroup {
-    constructor(groupName,description) {
-        this._id = crypto.randomUUID();
+    constructor(groupName,id=crypto.randomUUID(),description="") {
+        this.id = id;
         this.group = true;
+        // this exists to inform the previous version of the serialize/deserialize method
+        // that it's an ItemGroup (reserialized objects lose their instanceof result)
         this.groupName = groupName;
         this.description = description;
         this.contents = new Array();
-    }
-
-    get id() {
-        return this._id;
     }
 
     addToGroup(itemToAdd) {

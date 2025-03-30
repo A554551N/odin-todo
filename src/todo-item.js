@@ -1,5 +1,5 @@
 export default class ToDoItem {
-    constructor(id=crypto.randomUUID(),title,description="",dueDate,priorityValue,isComplete=false) {
+    constructor(title,description="",dueDate,priorityValue,isComplete=false,id=crypto.randomUUID()) {
         this.id = id;
         this.title = title
         this.description = description
