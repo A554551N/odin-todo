@@ -1,5 +1,6 @@
 export default class ToDoItem {
     constructor(title,description="",dueDate,priorityValue) {
+        this._id = Crypto.randomUUID();
         this.title = title
         this.description = description
         this.dueDate = dueDate
@@ -12,6 +13,10 @@ export default class ToDoItem {
         // use in other elements of the app.
     }
 
+    get id() {
+        return this._id;
+    }
+    
     get priority() {
         const priorityLevels = {
             1: "Normal",
