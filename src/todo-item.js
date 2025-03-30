@@ -1,5 +1,5 @@
 export default class ToDoItem {
-    constructor(title,description="",dueDate,priorityValue) {
+    constructor(title,description="",dueDate,priorityValue,isComplete=false) {
         this._id = crypto.randomUUID();
         this.title = title
         this.description = description
@@ -11,6 +11,7 @@ export default class ToDoItem {
         // 2 is high, 3 is critical)
         // I'll probably have a get function further down that returns a text expression for
         // use in other elements of the app.
+        this.isComplete = isComplete;
     }
 
     get id() {
