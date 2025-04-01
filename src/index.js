@@ -1,7 +1,13 @@
 import "./styles.css"
 import ToDoItem from "./todo-item.js"
 import ItemGroup from "./item-group.js";
+import {save,load} from "./dataManagement.js";
 
+if (localStorage.archive) {
+    // load the archive
+} else {
+    // create a new save file
+}
 const itemGroup = new ItemGroup("Test Group","Some Sample Elements");
 const masterGroup = new ItemGroup("Master Group","");
 const testItem = new ToDoItem("Test","A Test Item",new Date(),3);
