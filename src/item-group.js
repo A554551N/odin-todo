@@ -1,9 +1,6 @@
 export default class ItemGroup {
     constructor(groupName,id=crypto.randomUUID(),description="") {
         this.id = id;
-        this.group = true;
-        // this exists to inform the previous version of the serialize/deserialize method
-        // that it's an ItemGroup (reserialized objects lose their instanceof result)
         this.groupName = groupName;
         this.description = description;
         this.contents = new Array();
@@ -34,5 +31,18 @@ export default class ItemGroup {
     updateGroup(itemToUpdate) {
         this.deleteFromGroup(itemToUpdate.id);
         this.addToGroup(itemToUpdate);
+    }
+
+    serialize() {
+        const objToSerialize = {
+            id: this.id,
+            groupName: this.groupName,
+            description: this.description,
+            contents: new Array()
+        }
+        for (const element of this.contents) {
+            objToSerialize.contents.push(element.serialize());
+        }
+        return JSON.stringify(objToSerialize);
     }
 }

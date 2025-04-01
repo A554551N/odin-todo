@@ -6,7 +6,6 @@ const itemGroup = new ItemGroup("Test Group","Some Sample Elements");
 const masterGroup = new ItemGroup("Master Group","");
 const testItem = new ToDoItem("Test","A Test Item",new Date(),3);
 const testTwo = new ToDoItem("Test 2","A Second Test",new Date(),1);
-
 itemGroup.addToGroup(testItem);
 itemGroup.addToGroup(testTwo);
 
@@ -23,3 +22,4 @@ itemGroup.updateGroup(returnedItem);
 masterGroup.addToGroup(itemGroup);
 //console.table(itemGroup);
 //console.table(itemGroup);
+console.log(itemGroup.serialize());

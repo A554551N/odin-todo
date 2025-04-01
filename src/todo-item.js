@@ -6,6 +6,7 @@ export default class ToDoItem {
         this.dueDate = dueDate
         // date is going to be a bear, always is.  For now I'll take the date from the 
         // form as it comes, but this will likely eat up a lot of my time later. 
+        
         this.priorityValue = priorityValue
         // I'm choosing to store the priority as a 3 step value (1 is normal,
         // 2 is high, 3 is critical)
@@ -31,6 +32,16 @@ export default class ToDoItem {
             "critical": 3
         }
         this.priorityValue = priorityLevels[sanitizedPriorityString];
+    }
+
+    serialize() {
+        const objToSerialize = {title:this.title,
+            description:this.description,
+            dueDate:this.dueDate,
+            priorityValue:this.priorityValue,
+            isComplete:this.isComplete,
+            id:this.id}
+        return JSON.stringify(objToSerialize)
     }
 }
 /*
