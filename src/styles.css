@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -68,4 +72,45 @@ body {
 
 .content-container {
     grid-area: content;
+    background-color: #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+
+.todo-card {
+    background-color: white;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #aaaaaa;
+    border: 2px solid black;
+    margin-bottom: 1rem;
+}
+
+.card-header-text {
+    font-family: "Faculty Glyphic",sans-serif;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.card-description {
+    font-family: "Covered By Your Grace",sans-serif;
+    font-size: 1.5rem;
+}
+.due-date {
+    font-family: "Roboto",sans-serif;
+}
+
+.complete {
+    background-color: lightgreen;
+}
+
+.overdue {
+    background-color: lightcoral;
 }
