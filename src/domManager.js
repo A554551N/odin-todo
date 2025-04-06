@@ -84,6 +84,9 @@ export default class DOMManager {
             listItem.textContent = group.groupName;
             listItem.dataset.id = group.id;
             listItem.classList.add("group-li");
+            if(listItem.dataset.id === this.data.activeGroup.id) {
+                listItem.classList.add("active-group");
+            }
             listItem.addEventListener("click",(e) => {
                 const newActiveGroupID = e.target.dataset.id;
                 this.data.activeGroup = newActiveGroupID;

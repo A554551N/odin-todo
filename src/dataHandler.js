@@ -61,11 +61,13 @@ export default class DataHandler {
     createNewItem(title,dueDate,description="",priority=1) {
         const newItem = new ToDoItem(title,description,dueDate,priority);
         this._activeGroup.addToGroup(newItem);
+        return newItem.id;
     }
 
     createNewGroup(groupName,description=""){
         const newGroup = new ItemGroup(groupName,description);
         this.master.addToGroup(newGroup);
+        return newGroup.id;
     }
 
     toggleComplete(itemID) {
@@ -84,5 +86,9 @@ export default class DataHandler {
                 return true;
             }
         }
+    }
+
+    get activeGroup() {
+        return this._activeGroup;
     }
 }
