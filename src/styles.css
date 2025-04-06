@@ -15,27 +15,55 @@ body {
 }
 
 .sidebar {
+    padding: 1rem;
     display: grid;
     grid-template-rows: 1fr 6fr 1fr;
     grid-area: sidebar;
+    background-color: #1F2937;
+    color: #E5E7EB;
 }
 
 .sidebar-header {
+    display: flex;
     justify-self: center;
     align-self: center;
+    font-family: "Faculty Glyphic", sans-serif;
+}
+
+.sidebar-header img {
+    margin-right: 10px;
 }
 
 .project-list-container {
+    height: 100%;
     align-self: center;
 }
 
 #project-list {
     list-style-type: none;
+    font-family: "Roboto",sans-serif;
+    font-size: 2rem;
+}
+
+#project-list li:hover {
+    color: orange;
+    cursor: pointer;
 }
 
 .sidebar-controls {
     align-self: last baseline;
     justify-self: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.sidebar-controls button {
+    width: 40%;
+    padding: 1rem;
 }
 
 .content-container {
