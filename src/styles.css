@@ -67,7 +67,15 @@ body {
 
 .sidebar-controls button {
     width: 40%;
+}
+
+button {
     padding: 1rem;
+    background-color: #3882F6;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    border: 2px solid white;
+    border-radius: 5px;
 }
 
 .content-container {
@@ -91,6 +99,7 @@ body {
 
 .card-header-text {
     font-family: "Faculty Glyphic",sans-serif;
+    margin-right: 1rem;
 }
 
 .card-header {
@@ -102,6 +111,15 @@ body {
 .card-description {
     font-family: "Covered By Your Grace",sans-serif;
     font-size: 1.5rem;
+}
+
+.card-controls {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-controls button {
+    margin-right: 1rem;
 }
 .due-date {
     font-family: "Roboto",sans-serif;
