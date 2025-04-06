@@ -132,3 +132,11 @@ button {
 .overdue {
     background-color: lightcoral;
 }
+
+.high-priority {
+    background-color: yellow;
+}
+
+.critical {
+    background-color: orange;
+}

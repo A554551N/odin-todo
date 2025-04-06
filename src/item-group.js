@@ -1,5 +1,5 @@
 export default class ItemGroup {
-    constructor(groupName,id=crypto.randomUUID(),description="") {
+    constructor(groupName,description="",id=crypto.randomUUID()) {
         this.id = id;
         this.groupName = groupName;
         this.description = description;
