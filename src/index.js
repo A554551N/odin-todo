@@ -4,9 +4,10 @@ import ItemGroup from "./item-group.js";
 import {save,load} from "./dataManagement.js";
 
 if (localStorage.archive) {
-    // load the archive
+    load();
+    console.log("Save Data Found");
 } else {
-    // create a new save file
+    save(masterGroup.serialize());
 }
 const itemGroup = new ItemGroup("Test Group","Some Sample Elements");
 let masterGroup = new ItemGroup("Master Group","");
