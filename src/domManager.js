@@ -23,7 +23,7 @@ export default class DOMManager {
             cardHeader.appendChild(priorityText);
 
             const dueDateText = document.createElement("div");
-            dueDateText.textContent = dueDate;
+            dueDateText.textContent = `Due: ${dueDate}`;
             dueDateText.classList.add("due-date");
             cardHeader.appendChild(dueDateText);
 
