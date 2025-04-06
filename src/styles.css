@@ -1,3 +1,43 @@
 body {
-    color: red;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+    "sidebar content";
+    grid-template-columns: 1fr 5fr;
+}
+
+.sidebar {
+    display: grid;
+    grid-template-rows: 1fr 6fr 1fr;
+    grid-area: sidebar;
+}
+
+.sidebar-header {
+    justify-self: center;
+    align-self: center;
+}
+
+.project-list-container {
+    align-self: center;
+}
+
+#project-list {
+    list-style-type: none;
+}
+
+.sidebar-controls {
+    align-self: last baseline;
+    justify-self: center;
+}
+
+.content-container {
+    grid-area: content;
 }
