@@ -1,6 +1,9 @@
 export default class DOMManager {
+    constructor(dataManager) {
+        this.data = dataManager;
+    }
     
-    createCard(title,dueDate,description,priorityValue,priority,isComplete) {
+    createCard(title,dueDate,description,priorityValue,priority,isComplete,itemID) {
         const newCard = document.createElement("div");
             newCard.classList.add("todo-card");
             const cardHeader = document.createElement("div");
@@ -38,10 +41,17 @@ export default class DOMManager {
 
             const completeButton = document.createElement("button");
             completeButton.textContent = "Mark Complete";
+            completeButton.dataset.id = itemID;
+            completeButton.addEventListener("click",(e)=>{
+                const cardToTarget = e.target.dataset.id;
+                this.data.toggleComplete(cardToTarget);
+                this.updateMainContent();
+            })
             cardControls.appendChild(completeButton);
 
             const editButton = document.createElement("button");
             editButton.textContent = "Edit";
+            editButton.dataset.id = itemID;
             cardControls.appendChild(editButton);
 
             if(isComplete) {
@@ -51,26 +61,45 @@ export default class DOMManager {
             return newCard;
     }
 
-    updateMainContent(todos) {
+    updateMainContent() {
         const cardContainer = document.querySelector(".content-container");
-        for(const todo of todos) {
+        cardContainer.replaceChildren();
+        for(const todo of this.data.activeGroupContents) {
             cardContainer.appendChild(
                 this.createCard(todo.title,
                                 todo.dueDate.toDateString(),
                                 todo.description,
                                 todo.priorityValue,
                                 todo.priority,
-                                todo.isComplete));
+                                todo.isComplete,
+                                todo.id));
         }
     }
 
-    updateSidebar(groups) {
+    updateSidebar() {
         const sidebar = document.querySelector("#project-list");
-        for (const group of groups) {
-            console.log(group.id);
+        sidebar.replaceChildren();
+        for (const group of this.data.allGroups) {
             const listItem = document.createElement("li");
             listItem.textContent = group.groupName;
+            listItem.dataset.id = group.id;
+            listItem.classList.add("group-li");
+            listItem.addEventListener("click",(e) => {
+                const newActiveGroupID = e.target.dataset.id;
+                this.data.activeGroup = newActiveGroupID;
+                this.updateMainContent();
+                this.clearActiveSidebar();
+                listItem.classList.add("active-group");
+
+            })
             sidebar.appendChild(listItem);
+        }
+    }
+
+    clearActiveSidebar() {
+        const allSidebarItems = document.querySelectorAll(".group-li");
+        for (const sidebarItem of allSidebarItems) {
+            sidebarItem.classList.remove("active-group");
         }
     }
 }

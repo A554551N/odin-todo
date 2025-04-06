@@ -3,12 +3,13 @@ import ToDoItem from "./todo-item";
 
 export default class DataHandler {
     constructor() {
+        // needs to run load if a master already exists
         this.master = new ItemGroup("master");
-        if (this.master.contents.length>0){
-            this.activeGroup = this.master.contents[0];
-        } else {
-            this.activeGroup = new ItemGroup("Default");
+        if (this.master.contents.length===0){
+            this.master.addToGroup(new ItemGroup("Default"));
         }
+
+        this._activeGroup = this.master.contents[0]
     }
     save() {
         localStorage.setItem("archive",this.master);
@@ -47,6 +48,41 @@ export default class DataHandler {
 
             restoredMaster.addToGroup(restoredGroup);
             return restoredMaster;
+        }
+    }
+
+    get activeGroupContents() {
+        return this._activeGroup.contents;
+    }
+    get allGroups() {
+        return this.master.contents;
+    }
+
+    createNewItem(title,dueDate,description="",priority=1) {
+        const newItem = new ToDoItem(title,description,dueDate,priority);
+        this._activeGroup.addToGroup(newItem);
+    }
+
+    createNewGroup(groupName,description=""){
+        const newGroup = new ItemGroup(groupName,description);
+        this.master.addToGroup(newGroup);
+    }
+
+    toggleComplete(itemID) {
+        for(const item of this.activeGroupContents){
+            if(item.id === itemID) {
+                item.isComplete = !item.isComplete;
+                return true;
+            }
+        }
+    }
+
+    set activeGroup(groupID) {
+        for(const group of this.master.contents){
+            if(group.id === groupID) {
+                this._activeGroup = group;
+                return true;
+            }
         }
     }
 }

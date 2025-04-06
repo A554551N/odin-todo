@@ -144,3 +144,8 @@ button {
 .critical {
     background-color: orange;
 }
+
+.active-group {
+    background-color: white;
+    color: #1F2937;
+}
