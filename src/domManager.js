@@ -13,7 +13,13 @@ export default class DOMManager {
             cardHeader.appendChild(headerText);
 
             const priorityText = document.createElement("div");
+            priorityText.classList.add("priority");
             priorityText.textContent = priority;
+            if (priorityValue === 2) {
+                priorityText.classList.add("high-priority");
+            } else if (priorityValue === 3) {
+                priorityText.classList.add("critical");
+            }
             cardHeader.appendChild(priorityText);
 
             const dueDateText = document.createElement("div");
@@ -40,10 +46,6 @@ export default class DOMManager {
 
             if(isComplete) {
                 newCard.classList.add("complete");
-            } else if (priorityValue === 2) {
-                newCard.classList.add("high-priority");
-            } else if (priorityValue === 3) {
-                newCard.classList.add("critical");
             }
 
             return newCard;

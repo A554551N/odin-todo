@@ -121,7 +121,7 @@ button {
 .card-controls button {
     margin-right: 1rem;
 }
-.due-date {
+.due-date,.priority {
     font-family: "Roboto",sans-serif;
 }
 
@@ -139,4 +139,8 @@ button {
 
 .critical {
     background-color: orange;
+}
+
+.priority {
+    padding: 10px;
 }

@@ -28,7 +28,7 @@ if (returnedItem === testItem) {
 
 returnedItem.title = "Updated Title";
 itemGroup.updateGroup(returnedItem);
-testItem.priorityValue = 1;
+testItem.priorityValue = 2;
 domManager.updateMainContent(itemGroup.contents);
 console.table(masterGroup.contents);
 domManager.updateSidebar(masterGroup.contents);
