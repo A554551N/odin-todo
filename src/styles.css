@@ -149,3 +149,7 @@ button {
     background-color: white;
     color: #1F2937;
 }
+
+.hidden {
+    display: none;
+}
