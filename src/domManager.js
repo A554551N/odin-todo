@@ -74,6 +74,43 @@ export default class DOMManager {
                                 todo.isComplete,
                                 todo.id));
         }
+        const newCardButton = document.createElement("button");
+        newCardButton.textContent = "+ New Item";
+        newCardButton.id = "new-item-button";
+        cardContainer.appendChild(newCardButton);
+        cardContainer.addEventListener("click",() => {
+            const modalComponents = document.querySelectorAll(".modal");
+            for (const component of modalComponents) {
+                component.classList.remove("hidden");
+            }
+            const prioritySelector = document.querySelector("#priority-selector");
+            prioritySelector.addEventListener("click", () => {
+                const priorityClasses = {
+                    1: "normal",
+                    2: "high-priority",
+                    3: "critical"
+                }
+
+                const priorityLevelsObj = this.data.itemPriorityLevels;
+                const priorityLevelsInt = Object.keys(priorityLevelsObj).map(
+                    (pval) => {
+                        return Number(pval);
+                    }
+                )
+                const highestPriority = Math.max(...priorityLevelsInt);
+                if (Number(prioritySelector.dataset["prival"]) === highestPriority){
+                    prioritySelector.dataset["prival"] = 1;
+                    prioritySelector.classList.remove("critical")
+                } else {
+                    prioritySelector.dataset["prival"] = Number(prioritySelector.dataset["prival"]) + 1; 
+                }
+                prioritySelector.textContent = priorityLevelsObj[prioritySelector.dataset["prival"]];
+                prioritySelector.setAttribute('class', '')
+                prioritySelector.classList.add(
+                    priorityClasses[Number(prioritySelector.dataset["prival"])]
+                )
+            })
+        })
     }
 
     updateSidebar() {

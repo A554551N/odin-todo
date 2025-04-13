@@ -144,6 +144,11 @@ button {
     background-color: lightcoral;
 }
 
+.normal {
+    background-color: #3882F6;
+    color: white;
+}
+
 .high-priority {
     background-color: yellow;
     color: black;
