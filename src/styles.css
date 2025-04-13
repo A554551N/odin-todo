@@ -86,6 +86,7 @@ button {
     width: 50%;
     align-self: center;
     border-color: black;
+    font-size: 1.2rem;
 }
 
 .content-container {
@@ -178,14 +179,39 @@ button {
 }
 
 .new-list-modal {
-    height: 30%;
     width: 30%;
     background-color: var(--light-color);
     place-self: center;
     z-index: 1;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #444;
 }
 
 .new-list-modal form {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.new-list-modal h1 {
+    font-family: "Faculty Glyphic", sans-serif;
+}
+
+form label {
+    font-family: "Roboto",sans-serif;
+}
+
+form button {
+    font-size: 1.2rem;
+}
+
+input[type="text"], input[type="date"] {
+    font-size: 1.2rem;
+}
+
+.form-element-wrapper {
     display: flex;
     flex-direction: column;
 }

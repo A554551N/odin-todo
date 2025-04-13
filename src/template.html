@@ -14,22 +14,30 @@
             <h1>New Item</h1>
             <form>
                 <!--Title-->
-                <label for="titleInput">
-                    Title
-                </label>
+                <div class="form-element-wrapper">
+                    <label for="titleInput">
+                        Title
+                    </label>
                     <input type="text" id="titleInput">
+                </div>
                 <!--Due Date-->
-                <label for="dateInput">
-                    Due Date
-                </label>
+                <div class="form-element-wrapper">
+                    <label for="dateInput">
+                        Due Date
+                    </label>
                     <input type="date" id="dateInput">
+                </div>
                 <!--Priority-->
-                <label for="priority-selector">Priority</label>
-                <button type="button" data-prival = 1 id="priority-selector">Normal</button>
+                <div class="form-element-wrapper">
+                    <label for="priority-selector">Priority</label>
+                    <button type="button" data-prival = 1 id="priority-selector">Normal</button>
+                </div>
                 <!--Description-->
-                <label for="descriptionInput">Description</label>
-                <textarea name="descriptionInput" id="descriptionInput"></textarea>
-                <button type="button">Add Item</button>
+                <div class="form-element-wrapper">
+                    <label for="descriptionInput">Description</label>
+                    <textarea rows = 5 name="descriptionInput" id="descriptionInput"></textarea>
+                </div>
+                <button type="button" id="add-item-button">Add Item</button>
             </form>
         </div>
     </div>
