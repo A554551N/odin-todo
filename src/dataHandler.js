@@ -59,7 +59,11 @@ export default class DataHandler {
     }
 
     createNewItem(title,dueDate,description="",priority=1) {
-        const newItem = new ToDoItem(title,description,dueDate,priority);
+        const newItem = new ToDoItem(
+            title,
+            description,
+            new Date(dueDate),
+            priority);
         this._activeGroup.addToGroup(newItem);
         return newItem.id;
     }
