@@ -12,16 +12,16 @@ export default class ToDoItem {
         // 2 is high, 3 is critical)
         // I'll probably have a get function further down that returns a text expression for
         // use in other elements of the app.
+        this._priorityLevels = {
+            1: "Normal",
+            2: "High",
+            3: "Critical",
+        }
         this.isComplete = isComplete;
     }
 
     get priority() {
-        const priorityLevels = {
-            1: "Normal",
-            2: "High",
-            3: "Critical"
-        }
-        return priorityLevels[this.priorityValue]
+        return this._priorityLevels[this.priorityValue]
     }
 
     set priority(priorityString) {
@@ -33,7 +33,9 @@ export default class ToDoItem {
         }
         this.priorityValue = priorityLevels[sanitizedPriorityString];
     }
-
+    get priorityLevels() {
+        return this._priorityLevels;
+    }
     serialize() {
         const objToSerialize = {title:this.title,
             description:this.description,
