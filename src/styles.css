@@ -7,6 +7,7 @@ body {
     padding: 0;
     height: 100vh;
     width: 100vw;
+    --light-color: #E5E7EB;
 }
 
 .main-container {
@@ -24,7 +25,7 @@ body {
     grid-template-rows: 1fr 6fr 1fr;
     grid-area: sidebar;
     background-color: #1F2937;
-    color: #E5E7EB;
+    color: var(--light-color);
 }
 
 .sidebar-header {
@@ -81,9 +82,15 @@ button {
     border-radius: 5px;
 }
 
+#new-item-button {
+    width: 50%;
+    align-self: center;
+    border-color: black;
+}
+
 .content-container {
     grid-area: content;
-    background-color: #E5E7EB;
+    background-color: var(--light-color);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -139,10 +146,12 @@ button {
 
 .high-priority {
     background-color: yellow;
+    color: black;
 }
 
 .critical {
     background-color: orange;
+    color: black;
 }
 
 .active-group {
@@ -150,6 +159,41 @@ button {
     color: #1F2937;
 }
 
+.modal-bg {
+    height: 100vh;
+    width: 100vw;
+    animation-name: fadeIn;
+    animation-duration: 0.6s;
+    background-color: rgba(100,100,100,.6);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-list-modal {
+    height: 30%;
+    width: 30%;
+    background-color: var(--light-color);
+    place-self: center;
+    z-index: 1;
+}
+
+.new-list-modal form {
+    display: flex;
+    flex-direction: column;
+}
 .hidden {
     display: none;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1}
+    to {opacity: 0}
 }

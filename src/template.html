@@ -9,6 +9,30 @@
     <title>Odin To-Do</title>
 </head>
 <body>
+    <div class="modal modal-bg hidden">
+        <div class="modal new-list-modal hidden">
+            <h1>New Item</h1>
+            <form>
+                <!--Title-->
+                <label for="titleInput">
+                    Title
+                </label>
+                    <input type="text" id="titleInput">
+                <!--Due Date-->
+                <label for="dateInput">
+                    Due Date
+                </label>
+                    <input type="date" id="dateInput">
+                <!--Priority-->
+                <label for="priority-selector">Priority</label>
+                <button type="button" data-prival = 1 id="priority-selector">Normal</button>
+                <!--Description-->
+                <label for="descriptionInput">Description</label>
+                <textarea name="descriptionInput" id="descriptionInput"></textarea>
+                <button type="button">Add Item</button>
+            </form>
+        </div>
+    </div>
     <div class="main-container">
         <div class="sidebar">
             <div class="sidebar-header">
