@@ -91,4 +91,9 @@ export default class DataHandler {
     get activeGroup() {
         return this._activeGroup;
     }
+
+    get itemPriorityLevels() {
+        const templateItem = new ToDoItem();
+        return templateItem.priorityLevels
+    }
 }
