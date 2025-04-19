@@ -45,10 +45,6 @@ export default class ToDoItem {
             id:this.id}
         return JSON.stringify(objToSerialize)
     }
-
-    get stringDate() {
-        return this.dueDate.toDateString();
-    }
 }
 /*
 I'm going to include comment notes on this module while I build it, and then remove them at the end.
