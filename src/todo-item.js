@@ -47,7 +47,7 @@ export default class ToDoItem {
     }
 
     get stringDate() {
-        return Date.toDateString(this.dueDate);
+        return this.dueDate.toDateString();
     }
 }
 /*
