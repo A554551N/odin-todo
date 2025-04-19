@@ -52,7 +52,7 @@ export default class DataHandler {
     }
 
     get activeGroupContents() {
-        return this._activeGroup.contents;
+        return this._activeGroup.contents;z
     }
     get allGroups() {
         return this.master.contents;
