@@ -65,6 +65,7 @@ export default class DataHandler {
             new Date(dueDate),
             priority);
         this._activeGroup.addToGroup(newItem);
+        console.log(`Added Item: ${newItem.title}`);
         return newItem.id;
     }
 

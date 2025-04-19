@@ -1,6 +1,7 @@
 export default class DOMManager {
     constructor(dataManager) {
         this.data = dataManager;
+        this.initPage();
     }
     
     createCard(title,dueDate,description,priorityValue,priority,isComplete,itemID) {
@@ -19,9 +20,9 @@ export default class DOMManager {
             priorityText.classList.add("priority");
             priorityText.textContent = priority;
             if (priorityValue === 2) {
-                priorityText.classList.add("high-priority");
+                priorityText.classList.add("High");
             } else if (priorityValue === 3) {
-                priorityText.classList.add("critical");
+                priorityText.classList.add("Critical");
             }
             cardHeader.appendChild(priorityText);
 
@@ -61,6 +62,51 @@ export default class DOMManager {
             return newCard;
     }
 
+    initPage() {
+        console.log("Page Loaded")
+        document.querySelector("#new-item-button").addEventListener("click",(e) => {
+            this.toggleHideModal();
+            this.updatePriorityElement(1);
+        })
+
+        const prioritySelector = document.querySelector("#priority-selector");
+            prioritySelector.addEventListener("click", () => {
+
+                const priorityLevelsObj = this.data.itemPriorityLevels;
+                const priorityLevelsInt = Object.keys(priorityLevelsObj).map(
+                    (pval) => {
+                        return Number(pval);
+                    }
+                )
+                const highestPriority = Math.max(...priorityLevelsInt);
+                if (Number(prioritySelector.dataset["prival"]) === highestPriority){
+                    this.updatePriorityElement(1);
+                } else {
+                    this.updatePriorityElement(Number(prioritySelector.dataset["prival"]) + 1); 
+                }
+            })
+
+        const addItemButton = document.querySelector("#add-item-button");
+        addItemButton.addEventListener("click",(e)=>{
+            console.log("The code of Add Item Button is running")
+        const newTitleInput = document.querySelector("#titleInput");
+        const newItemTitle = newTitleInput.value;
+        newTitleInput.value = "";
+        const newDueInput = document.querySelector("#dateInput");
+        const newItemDue = newDueInput.value;
+        newDueInput.value = "";
+        const newPriorityInput = document.querySelector("#priority-selector");
+        const newItemPriority = Number(newPriorityInput.dataset["prival"]);
+        newPriorityInput.dataset["prival"] = 1;
+        const newDescriptionInput = document.querySelector("#descriptionInput");
+        const newItemDescription = newDescriptionInput.value;
+        newDescriptionInput.value = "";
+        this.data.createNewItem(newItemTitle,newItemDue,newItemDescription,newItemPriority);
+        this.updateMainContent();
+        this.toggleHideModal();
+        })
+    }
+
     updateMainContent() {
         const cardContainer = document.querySelector(".content-container");
         cardContainer.replaceChildren();
@@ -74,43 +120,13 @@ export default class DOMManager {
                                 todo.isComplete,
                                 todo.id));
         }
-        const newCardButton = document.createElement("button");
-        newCardButton.textContent = "+ New Item";
-        newCardButton.id = "new-item-button";
-        cardContainer.appendChild(newCardButton);
-        cardContainer.addEventListener("click",() => {
-            const modalComponents = document.querySelectorAll(".modal");
-            for (const component of modalComponents) {
-                component.classList.remove("hidden");
-            }
-            const prioritySelector = document.querySelector("#priority-selector");
-            prioritySelector.addEventListener("click", () => {
-                const priorityClasses = {
-                    1: "normal",
-                    2: "high-priority",
-                    3: "critical"
-                }
+    }
 
-                const priorityLevelsObj = this.data.itemPriorityLevels;
-                const priorityLevelsInt = Object.keys(priorityLevelsObj).map(
-                    (pval) => {
-                        return Number(pval);
-                    }
-                )
-                const highestPriority = Math.max(...priorityLevelsInt);
-                if (Number(prioritySelector.dataset["prival"]) === highestPriority){
-                    prioritySelector.dataset["prival"] = 1;
-                    prioritySelector.classList.remove("critical")
-                } else {
-                    prioritySelector.dataset["prival"] = Number(prioritySelector.dataset["prival"]) + 1; 
-                }
-                prioritySelector.textContent = priorityLevelsObj[prioritySelector.dataset["prival"]];
-                prioritySelector.setAttribute('class', '')
-                prioritySelector.classList.add(
-                    priorityClasses[Number(prioritySelector.dataset["prival"])]
-                )
-            })
-        })
+    toggleHideModal() {
+        const modalComponents = document.querySelectorAll(".modal");
+        for (const component of modalComponents) {
+            component.classList.toggle("hidden");
+        }
     }
 
     updateSidebar() {
@@ -134,6 +150,22 @@ export default class DOMManager {
             })
             sidebar.appendChild(listItem);
         }
+    }
+
+    updatePriorityElement(prival) {
+        const priorityLevels = {
+            1: "Normal",
+            2: "High",
+            3: "Critical"
+        }
+
+        const prioritySelector = document.querySelector("#priority-selector");
+        prioritySelector.dataset["prival"] = prival
+        prioritySelector.textContent = priorityLevels[prioritySelector.dataset["prival"]];
+                prioritySelector.setAttribute('class', '')
+                prioritySelector.classList.add(
+                    priorityLevels[Number(prioritySelector.dataset["prival"])]
+                )
     }
 
     clearActiveSidebar() {

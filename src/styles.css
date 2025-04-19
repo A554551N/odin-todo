@@ -89,7 +89,7 @@ button {
     font-size: 1.2rem;
 }
 
-.content-container {
+.right-container {
     grid-area: content;
     background-color: var(--light-color);
     display: flex;
@@ -145,17 +145,17 @@ button {
     background-color: lightcoral;
 }
 
-.normal {
+.Normal {
     background-color: #3882F6;
     color: white;
 }
 
-.high-priority {
+.High {
     background-color: yellow;
     color: black;
 }
 
-.critical {
+.Critical {
     background-color: orange;
     color: black;
 }
