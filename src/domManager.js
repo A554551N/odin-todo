@@ -55,12 +55,14 @@ export default class DOMManager {
             editButton.dataset.id = itemID;
             editButton.addEventListener("click",(e) => {
                 this.toggleHideModal();
+                this.setModalMode("edit");
                 const header = document.querySelector("#modal-header")
-                header.textContent = "Edit Item"
                 const objToLoad = this.data.getItemFromID(e.target.dataset.id);
                 header.dataset.id = objToLoad.id;
-                (document.querySelector("#titleInput")).value = objToLoad.title;
-            
+                document.querySelector("#titleInput").value = objToLoad.title;
+                document.querySelector("#dateInput").valueAsDate = objToLoad.dueDate;
+                this.updatePriorityElement(objToLoad.priorityValue);
+                document.querySelector("#descriptionInput").value = objToLoad.description;
             });
             cardControls.appendChild(editButton);
 
@@ -71,6 +73,17 @@ export default class DOMManager {
             return newCard;
     }
 
+    setModalMode(editOrNew){
+        if (editOrNew === "edit"){
+                const header = document.querySelector("#modal-header")
+                header.textContent = "Edit Item"
+                document.querySelector("#add-item-button").textContent = "Update Item";
+        } else {
+            const header = document.querySelector("#modal-header")
+            header.textContent = "New Item"
+            document.querySelector("#add-item-button").textContent = "Add Item";
+        }
+    }
     initPage() {
         console.log("Page Loaded")
         document.querySelector("#new-item-button").addEventListener("click",(e) => {
@@ -97,7 +110,7 @@ export default class DOMManager {
 
         const addItemButton = document.querySelector("#add-item-button");
         addItemButton.addEventListener("click",(e)=>{
-            console.log("The code of Add Item Button is running")
+            this.setModalMode("new");
         const newTitleInput = document.querySelector("#titleInput");
         const newItemTitle = newTitleInput.value;
         newTitleInput.value = "";
