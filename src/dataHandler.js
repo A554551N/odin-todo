@@ -101,4 +101,12 @@ export default class DataHandler {
         const templateItem = new ToDoItem();
         return templateItem.priorityLevels
     }
+
+    getItemFromID(cardID){
+        for(const item of this._activeGroup.contents) {
+            if (item.id === cardID) {
+                return item;
+            }
+        }
+    }
 }
