@@ -53,6 +53,15 @@ export default class DOMManager {
             const editButton = document.createElement("button");
             editButton.textContent = "Edit";
             editButton.dataset.id = itemID;
+            editButton.addEventListener("click",(e) => {
+                this.toggleHideModal();
+                const header = document.querySelector("#modal-header")
+                header.textContent = "Edit Item"
+                const objToLoad = this.data.getItemFromID(e.target.dataset.id);
+                header.dataset.id = objToLoad.id;
+                (document.querySelector("#titleInput")).value = objToLoad.title;
+            
+            });
             cardControls.appendChild(editButton);
 
             if(isComplete) {
@@ -101,7 +110,13 @@ export default class DOMManager {
         const newDescriptionInput = document.querySelector("#descriptionInput");
         const newItemDescription = newDescriptionInput.value;
         newDescriptionInput.value = "";
+        
+        if (this.data.getItemFromID(document.querySelector("#modal-header").dataset.id)){
+            this.data.updateExistingItem(newItemTitle,newItemDue,newItemDescription,newItemPriority);
+        } else {
         this.data.createNewItem(newItemTitle,newItemDue,newItemDescription,newItemPriority);
+        }
+
         this.updateMainContent();
         this.toggleHideModal();
         })
