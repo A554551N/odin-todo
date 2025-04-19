@@ -89,6 +89,7 @@ export default class DOMManager {
         document.querySelector("#new-item-button").addEventListener("click",(e) => {
             this.toggleHideModal();
             this.updatePriorityElement(1);
+            this.setModalMode("new");
         })
 
         const prioritySelector = document.querySelector("#priority-selector");
@@ -110,7 +111,6 @@ export default class DOMManager {
 
         const addItemButton = document.querySelector("#add-item-button");
         addItemButton.addEventListener("click",(e)=>{
-            this.setModalMode("new");
         const newTitleInput = document.querySelector("#titleInput");
         const newItemTitle = newTitleInput.value;
         newTitleInput.value = "";
@@ -125,7 +125,8 @@ export default class DOMManager {
         newDescriptionInput.value = "";
         
         if (this.data.getItemFromID(document.querySelector("#modal-header").dataset.id)){
-            this.data.updateExistingItem(newItemTitle,newItemDue,newItemDescription,newItemPriority);
+            this.data.updateExistingItem(document.querySelector("#modal-header").dataset.id,
+            newItemTitle,newItemDue,newItemDescription,newItemPriority);
         } else {
         this.data.createNewItem(newItemTitle,newItemDue,newItemDescription,newItemPriority);
         }

@@ -68,6 +68,13 @@ export default class DataHandler {
         console.log(`Added Item: ${newItem.title}`);
         return newItem.id;
     }
+    updateExistingItem(id,title,dueDate,description,priority) {
+        const objToEdit = this.getItemFromID(id);
+        objToEdit.title = title;
+        objToEdit.dueDate = new Date(dueDate);
+        objToEdit.description = description;
+        objToEdit.priorityValue=priority;
+    }
 
     createNewGroup(groupName,description=""){
         const newGroup = new ItemGroup(groupName,description);
