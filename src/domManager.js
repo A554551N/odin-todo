@@ -4,7 +4,7 @@ export default class DOMManager {
         this.initPage();
     }
     
-    createCard(title,dueDate,description,priorityValue,priority,isComplete,itemID) {
+    createCard(title,dueDate,description,priorityValue,priority,isComplete,itemID,isOverdue) {
         const newCard = document.createElement("div");
             newCard.classList.add("todo-card");
             const cardHeader = document.createElement("div");
@@ -66,6 +66,9 @@ export default class DOMManager {
             });
             cardControls.appendChild(editButton);
 
+            if(isOverdue) {
+                newCard.classList.add("overdue");
+            }
             if(isComplete) {
                 newCard.classList.add("complete");
             }
@@ -181,7 +184,8 @@ export default class DOMManager {
                                 todo.priorityValue,
                                 todo.priority,
                                 todo.isComplete,
-                                todo.id));
+                                todo.id,
+                                todo.isOverdue));
         }
     }
 

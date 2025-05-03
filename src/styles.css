@@ -153,12 +153,12 @@ button {
     padding: 10px;
 }
 
-.complete {
-    background-color: lightgreen;
-}
-
 .overdue {
     background-color: lightcoral;
+}
+
+.complete {
+    background-color: lightgreen;
 }
 
 .Normal {

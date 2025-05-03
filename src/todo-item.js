@@ -1,3 +1,4 @@
+import { addDays,isAfter,formatISO } from "date-fns";
 export default class ToDoItem {
     constructor(title,description="",dueDate,priorityValue=1,isComplete=false,id=crypto.randomUUID()) {
         this.id = id;
@@ -20,6 +21,12 @@ export default class ToDoItem {
         this.isComplete = isComplete;
     }
 
+    get isOverdue() {
+        // add one day to the due date to account for the fact that
+        // the date includes a midnight timestamp.  This ensures that tasks due today
+        // do not highlight.
+        return isAfter(formatISO(new Date()),addDays(this.dueDate,1)) ? true : false;
+    }
     get priority() {
         return this._priorityLevels[this.priorityValue]
     }
