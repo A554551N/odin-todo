@@ -85,7 +85,6 @@ export default class DOMManager {
         }
     }
     initPage() {
-        console.log("Page Loaded")
         document.querySelector("#new-item-button").addEventListener("click",(e) => {
             this.toggleHideModal();
             this.updatePriorityElement(1);
@@ -149,6 +148,8 @@ export default class DOMManager {
         this.updateMainContent();
         this.toggleHideModal();
         })
+        
+        console.log("Page Loaded")
     }
 
     updateMainContent() {
