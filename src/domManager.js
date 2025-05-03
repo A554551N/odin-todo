@@ -108,6 +108,16 @@ export default class DOMManager {
                     this.updatePriorityElement(Number(prioritySelector.dataset["prival"]) + 1); 
                 }
             })
+        document.querySelector("#new-list").addEventListener("click",(e) => {
+            this.toggleHideSidebar();
+        })
+        
+        document.querySelector("#add-new-list").addEventListener("click",() => {
+            const newListName = document.querySelector("#new-list-name").value;
+            this.data.createNewGroup(newListName);
+            this.toggleHideSidebar();
+            this.updateSidebar();
+        })
 
         const addItemButton = document.querySelector("#add-item-button");
         addItemButton.addEventListener("click",(e)=>{
@@ -156,6 +166,11 @@ export default class DOMManager {
         for (const component of modalComponents) {
             component.classList.toggle("hidden");
         }
+    }
+
+    toggleHideSidebar() {
+        const sidebarElement = document.querySelector(".add-list");
+        sidebarElement.classList.toggle("hidden")
     }
 
     updateSidebar() {

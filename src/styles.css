@@ -65,7 +65,10 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
+.add-list {
+    display: flex;
+    flex-direction: column;
+}
 .sidebar-controls button {
     width: 40%;
     border: 2px solid;
@@ -89,6 +92,9 @@ button {
     font-size: 1.2rem;
 }
 
+#new-list-name {
+    margin-bottom: 1rem;
+}
 .right-container {
     grid-area: content;
     background-color: var(--light-color);
