@@ -123,6 +123,24 @@ export default class DOMManager {
             this.updateMainContent();
         })
 
+        document.querySelector("#edit-lists").addEventListener("click",()=>{
+            const allLists = document.querySelectorAll("#project-list li");
+            if(document.querySelector(".delete-group-button")){
+                return;
+            } else {
+                for (const list of allLists) {
+                        const deleteButton = document.createElement("button");
+                        deleteButton.textContent = "Delete";
+                        deleteButton.classList.add("delete-group-button");
+                        deleteButton.addEventListener("click",()=> {
+                            this.data.deleteGroup(list.dataset.id)
+                            this.updateSidebar();
+                        })
+                        list.appendChild(deleteButton);
+                }
+            }
+        })
+
         const addItemButton = document.querySelector("#add-item-button");
         addItemButton.addEventListener("click",(e)=>{
         const newTitleInput = document.querySelector("#titleInput");
@@ -148,7 +166,7 @@ export default class DOMManager {
         this.updateMainContent();
         this.toggleHideModal();
         })
-        
+
         console.log("Page Loaded")
     }
 

@@ -124,4 +124,18 @@ export default class DataHandler {
             }
         }
     }
+
+    deleteGroup(groupID) {
+        if(this.master.contents.length > 1) {
+            for (let i = 0;i<this.master.contents.length;i++) {
+                if (this.master.contents[i].id === groupID) {
+                    this.master.contents.splice(i,1);
+                    i--;
+                }
+                this._activeGroup = this.master.contents[0];
+            }
+        } else {
+            return "Error";
+        }
+    }
 }

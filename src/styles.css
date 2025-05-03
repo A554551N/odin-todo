@@ -50,6 +50,12 @@ body {
     font-size: 2rem;
 }
 
+#project-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
 #project-list li:hover {
     color: orange;
     cursor: pointer;
@@ -229,6 +235,10 @@ input[type="text"], input[type="date"] {
     display: none;
 }
 
+.delete-group-button {
+    background-color: #FF4444;
+    margin-left: 1rem;
+}
 @keyframes fadeIn {
     from {opacity: 0} 
     to {opacity: 1}
