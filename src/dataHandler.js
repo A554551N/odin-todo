@@ -1,5 +1,6 @@
 import ItemGroup from "./item-group";
 import ToDoItem from "./todo-item";
+import parseISO from 'date-fns/parseISO'
 
 export default class DataHandler {
     constructor() {
@@ -62,7 +63,7 @@ export default class DataHandler {
         const newItem = new ToDoItem(
             title,
             description,
-            new Date(dueDate),
+            parseISO(dueDate),
             priority);
         this._activeGroup.addToGroup(newItem);
         console.log(`Added Item: ${newItem.title}`);
@@ -71,7 +72,7 @@ export default class DataHandler {
     updateExistingItem(id,title,dueDate,description,priority) {
         const objToEdit = this.getItemFromID(id);
         objToEdit.title = title;
-        objToEdit.dueDate = new Date(dueDate);
+        objToEdit.dueDate = parseISO(dueDate);
         objToEdit.description = description;
         objToEdit.priorityValue=priority;
     }
