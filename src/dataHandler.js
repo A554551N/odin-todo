@@ -91,7 +91,14 @@ export default class DataHandler {
             }
         }
     }
-
+    deleteCompletedItems() {
+        for(let i=0;i<this.activeGroupContents.length;i++){
+            if(this.activeGroupContents[i].isComplete) {
+                this.activeGroupContents.splice(i,1);
+                i--;
+            }
+        }
+    }
     set activeGroup(groupID) {
         for(const group of this.master.contents){
             if(group.id === groupID) {

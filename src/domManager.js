@@ -119,6 +119,11 @@ export default class DOMManager {
             this.updateSidebar();
         })
 
+        document.querySelector("#clear-completed").addEventListener("click",()=>{
+            this.data.deleteCompletedItems();
+            this.updateMainContent();
+        })
+
         const addItemButton = document.querySelector("#add-item-button");
         addItemButton.addEventListener("click",(e)=>{
         const newTitleInput = document.querySelector("#titleInput");

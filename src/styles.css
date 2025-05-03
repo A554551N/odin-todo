@@ -83,11 +83,15 @@ button {
     font-family: "Roboto", sans-serif;
     border-color: white;
     border-radius: 5px;
+    cursor: pointer;
+}
+.main-container-controls {
+    display: flex;
+    justify-content: space-around;
 }
 
-#new-item-button {
-    width: 50%;
-    align-self: center;
+.main-container-controls button {
+    width: 30%;
     border-color: black;
     font-size: 1.2rem;
 }
